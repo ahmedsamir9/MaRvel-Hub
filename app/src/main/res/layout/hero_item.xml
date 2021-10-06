@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.jackandphantom.circularimageview.RoundedImage
+        android:id="@+id/hero_img"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/d"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rounded_radius="50" />
+
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/item_blurView"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hero_img"
+        app:layout_constraintEnd_toEndOf="@+id/hero_img"
+        app:layout_constraintStart_toStartOf="@+id/hero_img">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           tools:text="Avengers"
+           android:id="@+id/hero_name"
+           android:gravity="center"
+           android:layout_gravity="center"
+           android:textColor="@color/white"
+           android:textStyle="bold"
+           android:textSize="30sp"
+           />
+    </eightbitlab.com.blurview.BlurView>
+</androidx.constraintlayout.widget.ConstraintLayout>
