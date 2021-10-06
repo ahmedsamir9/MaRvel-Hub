@@ -1,7 +1,8 @@
-package com.example.marvelhub
+package com.example.marvelhub.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.marvelhub.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
