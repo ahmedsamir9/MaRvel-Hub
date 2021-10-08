@@ -1,13 +1,13 @@
-package com.example.marvelhub.local.mappers
+package com.example.marvelhub.data.local.mappers
 
-import com.example.marvelhub.data.model.CharacterData
-import com.example.marvelhub.local.model.CharacterEntity
+import com.example.marvelhub.data.local.model.CharacterEntity
+import com.example.marvelhub.domain.model.Character
 import com.example.marvelhub.utils.Mapper
-import kotlin.contracts.Returns
+import javax.inject.Inject
 
-class CharacterDataLocalMapper:Mapper<CharacterEntity,CharacterData> {
-    override fun from(data: CharacterEntity): CharacterData {
-        return CharacterData(
+class CharacterDomainLocalMapper @Inject constructor():Mapper<CharacterEntity,Character> {
+    override fun from(data: CharacterEntity): Character {
+        return Character(
             id = data.characterId,
             name = data.characterName,
             description = data.characterDescription,
@@ -15,7 +15,7 @@ class CharacterDataLocalMapper:Mapper<CharacterEntity,CharacterData> {
         )
     }
 
-    override fun to(data: CharacterData): CharacterEntity {
+    override fun to(data: Character): CharacterEntity {
         return CharacterEntity(
             characterId= data.id,
             characterName = data.name,

@@ -4,17 +4,20 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.marvelhub.R
 import com.example.marvelhub.databinding.FragmentSplashBinding
-import com.example.marvelhub.utils.setBlurImageWithGlide
+
 import eightbitlab.com.blurview.RenderScriptBlur
 
 import android.graphics.drawable.Drawable
 import android.view.*
 import androidx.navigation.fragment.findNavController
+import com.example.marvelhub.utils.startBlur
+import dagger.hilt.android.AndroidEntryPoint
+import eightbitlab.com.blurview.BlurView
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 
-
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
     private lateinit var binding: FragmentSplashBinding
@@ -37,7 +40,7 @@ class SplashFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        startBlurTheImage()
+        binding.blurView.startBlur(requireActivity())
         navigateToMainScreen()
     }
     private fun navigateToMainScreen(){
@@ -50,18 +53,4 @@ class SplashFragment : Fragment() {
         }, 3, TimeUnit.SECONDS)
 
     }
-    private fun startBlurTheImage(){
-        val radius = 20f
-        val decorView: View = requireActivity().window.decorView ;
-        val rootView = decorView.findViewById<View>(android.R.id.content) as ViewGroup
-        val windowBackground = decorView.background
-        binding.blurView.setupWith(rootView)
-            .setFrameClearDrawable(windowBackground)
-            .setBlurAlgorithm(RenderScriptBlur(context))
-            .setBlurRadius(radius)
-            .setBlurAutoUpdate(true)
-            .setHasFixedTransformationMatrix(true) // Or false if it's in a scrolling container or might be animated
-
-    }
-
 }

@@ -1,9 +1,9 @@
-package com.example.marvelhub.local
+package com.example.marvelhub.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.marvelhub.local.doa.CharacterDao
-import com.example.marvelhub.local.model.CharacterEntity
+import com.example.marvelhub.data.local.doa.CharacterDao
+import com.example.marvelhub.data.local.model.CharacterEntity
 
 
 @Database(entities = arrayOf(CharacterEntity::class),version = 1,exportSchema = false)

@@ -1,4 +1,4 @@
-package com.example.marvelhub.local.model
+package com.example.marvelhub.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
