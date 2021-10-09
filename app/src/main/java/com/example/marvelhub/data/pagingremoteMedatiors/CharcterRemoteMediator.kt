@@ -5,21 +5,20 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import com.example.marvelhub.data.local.model.CharacterEntity
-import com.example.marvelhub.data.local.model.CharacterRemoteKey
-import com.example.marvelhub.data.remote.mapper.CharacterEntityDtoMapper
+
 import com.example.marvelhub.data.repository.LocalDataSource
 import com.example.marvelhub.data.repository.RemoteDataSource
+import com.example.marvelhub.utils.Constants
+import com.example.marvelhub.utils.Mappers
 import retrofit2.HttpException
 import java.io.IOException
-import java.util.ArrayList
 
 @ExperimentalPagingApi
 data class CharacterRemoteMediator (
             val localDataSource: LocalDataSource,
             val remoteDataSource: RemoteDataSource
         ): RemoteMediator<Int, CharacterEntity>() {
-    val characterEntityDtoMapper= CharacterEntityDtoMapper()
-    val key = 1;
+    val key = Constants.BASE_OFFSET;
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, CharacterEntity>
@@ -54,7 +53,7 @@ data class CharacterRemoteMediator (
     private suspend fun fetchCharacters(pageNumber:Int): List<CharacterEntity> {
         val response = remoteDataSource.getCharacters(pageNumber)
         return response!!.data.results.map { characterDto ->
-            characterEntityDtoMapper.from(characterDto)
+            Mappers.fromCharacterDtoToCharacterEntity(characterDto)
         }
     }
 

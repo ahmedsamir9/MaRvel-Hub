@@ -2,15 +2,11 @@ package com.example.marvelhub.presentation.HomeScreen.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.marvelhub.databinding.HeroItemBinding
 import com.example.marvelhub.domain.model.Character
 import com.example.marvelhub.utils.setImage
-import com.example.marvelhub.utils.startBlur
 
 class CharacterAdapter(private val characters: ArrayList<Character>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -34,7 +30,7 @@ class CharacterAdapter(private val characters: ArrayList<Character>) :
         return characters.size
     }
 
-    fun submitList(list: List<com.example.marvelhub.domain.model.Character>) {
+    fun submitList(list: List<Character>) {
             val diffCallback = CharacterCallback(characters, list)
             val diffResult = DiffUtil.calculateDiff(diffCallback)
             characters.addAll(list)
@@ -46,7 +42,7 @@ class CharacterAdapter(private val characters: ArrayList<Character>) :
     constructor(
         private val binding : HeroItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(character: com.example.marvelhub.domain.model.Character) {
+        fun bind(character: Character) {
             binding.heroImg.setImage(character.imagePath)
             binding.heroName.text = character.name
         }

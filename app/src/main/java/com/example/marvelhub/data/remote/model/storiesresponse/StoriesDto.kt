@@ -1,6 +1,7 @@
 package com.example.marvelhub.data.remote.model.storiesresponse
 
 
+import com.example.marvelhub.data.remote.model.eventresponse.Thumbnail
 import com.google.gson.annotations.SerializedName
 
 data class StoriesDto(
@@ -25,7 +26,7 @@ data class StoriesDto(
     @SerializedName("series")
     val series: Series,
     @SerializedName("thumbnail")
-    val thumbnail: Any,
+    val thumbnail: Thumbnail,
     @SerializedName("title")
     val title: String,
     @SerializedName("type")

@@ -1,9 +1,6 @@
 package com.example.marvelhub.application.modules
-
-import com.example.marvelhub.BuildConfig
 import com.example.marvelhub.data.remote.MarvelService
 import com.example.marvelhub.data.remote.helper.calculatedMd5
-import com.example.marvelhub.data.remote.mapper.CharacterEntityDtoMapper
 import com.example.marvelhub.data.remote.source.RemoteDataSourceImpl
 import com.example.marvelhub.data.repository.RemoteDataSource
 import com.example.marvelhub.utils.Constants
@@ -80,6 +77,6 @@ class NetworkModule {
     }
     @Singleton
     @Provides
-    fun provideRemoteDataSource(marvelService: MarvelService,characterEntityDtoMapper: CharacterEntityDtoMapper):RemoteDataSource =RemoteDataSourceImpl(marvelService,characterEntityDtoMapper)
+    fun provideRemoteDataSource(marvelService: MarvelService):RemoteDataSource =RemoteDataSourceImpl(marvelService)
 
 }

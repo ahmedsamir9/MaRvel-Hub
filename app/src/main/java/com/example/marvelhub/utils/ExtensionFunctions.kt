@@ -12,6 +12,7 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import com.example.marvelhub.R
+import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
 import eightbitlab.com.blurview.BlurView
 import eightbitlab.com.blurview.RenderScriptBlur
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -37,4 +38,12 @@ fun BlurView.startBlur(currentActivity: FragmentActivity){
         .setBlurAutoUpdate(true)
         .setHasFixedTransformationMatrix(true) // Or false if it's in a scrolling container or might be animated
 
+}
+fun String.imagePathConcatenation(imagePath : String,imageExtension:String): String {
+    return "$imagePath.$imageExtension";
+}
+fun String.fillCharacterEmptyDescription(): String {
+    if (this.isNullOrBlank())
+    return "Sorry We Have No Data For This Character"
+    return this
 }

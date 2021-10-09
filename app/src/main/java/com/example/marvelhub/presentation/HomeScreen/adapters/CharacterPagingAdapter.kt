@@ -1,7 +1,6 @@
 package com.example.marvelhub.presentation.HomeScreen.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -15,7 +14,7 @@ DiffUtils
 ) {
     class CharacterPagingViewHolder(private val binding :HeroItemBinding,private val onClickListener:OnClickListenerOnCharacterItem) :
         RecyclerView.ViewHolder(binding.root){
-        fun onBind(item:Character){
+        fun onBind(item: Character){
             binding.heroImg.setImage(item.imagePath)
             binding.heroName.text = item.name
             binding.root.setOnClickListener {

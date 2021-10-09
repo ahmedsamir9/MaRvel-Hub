@@ -21,7 +21,6 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelhub.presentation.HomeScreen.adapters.CharacterPagingAdapter
 import com.example.marvelhub.utils.LoadingAdapter
-import com.example.marvelhub.utils.OnClickItem
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -50,12 +49,13 @@ class HomeFragment : Fragment(){
 
         })
         setUpCharactersRecyclerView()
+        collectPagingData()
     }
 
     override fun onResume() {
         super.onResume()
         setOnClickOnItem()
-        collectPagingData()
+
         handleCharacterListState()
     }
     private fun collectPagingData(){

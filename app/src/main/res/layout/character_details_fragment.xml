@@ -49,12 +49,15 @@
         app:layout_constraintTop_toBottomOf="@+id/character_img"
         tools:text="Ultron" />
 
+
     <androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/scrollable"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/character_name">
@@ -125,7 +128,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/comics_rv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/event_rv"
@@ -149,7 +152,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/event_rv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/series_rv"
@@ -168,12 +171,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/series"
+                android:text="@string/stories"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/series_rv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/stories_rv"
