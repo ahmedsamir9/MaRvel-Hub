@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent">
+
+    <com.jackandphantom.circularimageview.RoundedImage
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/event_img"
+        android:paddingEnd="@dimen/dimen16dp"
+        android:src="@drawable/d"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rounded_radius="50" />
+
+    <TextView
+        android:id="@+id/event_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/event_img"
+        app:layout_constraintStart_toStartOf="@+id/event_img"
+        app:layout_constraintTop_toBottomOf="@+id/event_img"
+        tools:text="@string/randomShow"
+        android:textColor="@color/white"
+        tools:textColor="@color/darkPink" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

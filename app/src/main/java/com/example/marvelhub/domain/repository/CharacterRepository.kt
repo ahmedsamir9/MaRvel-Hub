@@ -7,5 +7,6 @@ import com.example.marvelhub.utils.DataState
 
 import kotlinx.coroutines.flow.Flow
 interface CharacterRepository {
-    suspend fun getCharacters(): Flow<DataState<List<Character>>>
+    suspend fun getCharacters(): Flow<PagingData<Character>>
+    suspend fun getCharacterById(id :Int): Character
 }

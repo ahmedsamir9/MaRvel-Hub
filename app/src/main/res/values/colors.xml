@@ -8,4 +8,6 @@
     <color name="mainBackground">#24292F</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="darkPink">#e75480</color>
+
 </resources>

@@ -1,9 +1,8 @@
 package com.example.marvelhub.data.remote.mapper
 
 import com.example.marvelhub.data.local.model.CharacterEntity
-import com.example.marvelhub.data.remote.model.CharacterDto
-import com.example.marvelhub.data.remote.model.Thumbnail
-import com.example.marvelhub.utils.Mapper
+import com.example.marvelhub.data.remote.model.characterresponse.CharacterDto
+import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
 import javax.inject.Inject
 
 class CharacterEntityDtoMapper @Inject constructor(){

@@ -3,4 +3,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="retry">Retry</string>
+    <string name="events">Events</string>
+    <string name="Comics">Comics</string>
+    <string name="series">Series</string>
+    <string name="stories">Stories</string>
+    <string name="description">Description</string>
+    <string name="randomShow">sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+    sssssssssssssssssssssssssssssssssssssssssssssssssssss</string>
 </resources>

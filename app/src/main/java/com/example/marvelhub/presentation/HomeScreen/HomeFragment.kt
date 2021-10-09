@@ -1,37 +1,36 @@
 package com.example.marvelhub.presentation.HomeScreen
 
-import android.opengl.Visibility
-import androidx.lifecycle.ViewModelProvider
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.marvelhub.R
 import com.example.marvelhub.databinding.HomeFragmentBinding
-import com.example.marvelhub.presentation.HomeScreen.adapters.CharacterAdapter
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
-import okhttp3.Dispatcher
-import android.widget.Toast
+import androidx.paging.LoadState
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.marvelhub.utils.Status
+import com.example.marvelhub.presentation.HomeScreen.adapters.CharacterPagingAdapter
+import com.example.marvelhub.utils.LoadingAdapter
+import com.example.marvelhub.utils.OnClickItem
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(){
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding :HomeFragmentBinding
-    private var isLoadOnce = false
-    private lateinit var charactersAdapter: CharacterAdapter
+    private lateinit var characterPagingAdapter: CharacterPagingAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -40,77 +39,103 @@ class HomeFragment : Fragment(){
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.getCharacters()
-    }
     override fun onStart() {
         super.onStart()
-        charactersAdapter= CharacterAdapter(ArrayList())
+
+        characterPagingAdapter = CharacterPagingAdapter(object :CharacterPagingAdapter.OnClickListenerOnCharacterItem{
+            override fun onClickOnCharacter(characterId: Int) {
+                val navigationActionToDetailScreen = HomeFragmentDirections.actionHomeFragmentToCharacterDetailsFragment(characterId)
+                findNavController().navigate(navigationActionToDetailScreen)
+            }
+
+        })
         setUpCharactersRecyclerView()
     }
 
     override fun onResume() {
         super.onResume()
-setOnClickOnItem()
-        subscribeOnLiveData()
+        setOnClickOnItem()
+        collectPagingData()
+        handleCharacterListState()
     }
-    private fun subscribeOnLiveData(){
-        viewModel.character.observe(viewLifecycleOwner, Observer{ dataState->
-            when(dataState.status){
-                Status.SUCCESS->{
-                    dataState.data?.let {
-                        charactersAdapter.submitList(it)
-                        viewVisibilityInErrorState(View.GONE)
-                        viewVisibilityInLoadingState(View.GONE)
-                        isLoadOnce = true
-                    }
-                }
-                Status.LOADING->{
-                    viewVisibilityInLoadingState(View.VISIBLE)
-                }
-                Status.ERROR->{
-                    viewVisibilityInLoadingState(View.GONE)
-                    viewVisibilityInErrorState(View.VISIBLE)
-                }
+    private fun collectPagingData(){
+        lifecycleScope.launch{
+            viewModel.getCharacters().flowOn(Dispatchers.IO).collectLatest { pagingData->
+               characterPagingAdapter.submitData(pagingData)
             }
-        })
+        }
     }
     private fun setUpCharactersRecyclerView(){
 
         binding.charectersRv.apply {
             layoutManager =LinearLayoutManager(context)
-            adapter= charactersAdapter
+            adapter= characterPagingAdapter.withLoadStateFooter(footer = LoadingAdapter{characterPagingAdapter.retry()})
         }
         binding.charectersRv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(1)) {
-                    viewModel.getCharacters()
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) {
+                   toolBarDisappearingAnimation()
+                } else if(dy < 0) {
+                    toolBarAppearingAnimation()
+
                 }
             }
         })
     }
-    private fun viewVisibilityInErrorState(visibility:Int){
-        if (isLoadOnce)
-        binding.loadMoreRetryBtn.visibility =visibility
-        else
-            binding.mainRetryBtn.visibility =visibility
-    }
 
-    private fun viewVisibilityInLoadingState(visibility:Int){
-        if (isLoadOnce)
-            binding.loadMoreProgressBar.visibility =visibility
-        else
-            binding.mainprogressBar.visibility =visibility
-    }
     private fun setOnClickOnItem(){
         binding.mainRetryBtn.setOnClickListener {
-            viewModel.getCharacters()
+            characterPagingAdapter.retry()
         }
-        binding.loadMoreRetryBtn.setOnClickListener {
-            viewModel.getCharacters()
+    }
+    private fun  toolBarDisappearingAnimation(){
+        binding.toolbarCard.animate()
+            .alpha(0f)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    binding.toolbarCard.visibility =View.GONE
+                }
+            })
         }
+    private fun toolBarAppearingAnimation() {
+        binding.toolbarCard.apply {
+            animate()
+                .alpha(1f)
+                .setListener(null)
+            visibility =View.VISIBLE
 
+        }
+    }
+    private fun handleCharacterListState(){
+        characterPagingAdapter.addLoadStateListener { loadState ->
+        if (loadState.refresh is LoadState.Loading ||
+            loadState.append is LoadState.Loading)
+        // Show ProgressBar
+            if( characterPagingAdapter.itemCount <= 0)
+                binding.mainprogressBar.visibility = android.view.View.VISIBLE
+
+                val errorState = when {
+                    loadState.append is LoadState.Error -> loadState.append as LoadState.Error
+                    loadState.prepend is LoadState.Error ->  loadState.prepend as LoadState.Error
+                    loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
+                    else -> null
+                }
+                if(errorState == null||characterPagingAdapter.itemCount > 0){
+                    binding.mainRetryBtn.visibility = android.view.View.GONE
+                }
+                else
+                {
+                    binding.mainprogressBar.visibility = android.view.View.GONE
+                    binding.mainRetryBtn.visibility = android.view.View.VISIBLE
+                    binding.mainRetryBtn.setOnClickListener {
+                        characterPagingAdapter.retry()
+                    }
+                }
+
+
+        if (characterPagingAdapter.itemCount >0) binding.mainprogressBar.visibility = android.view.View.GONE
+    }
     }
 }

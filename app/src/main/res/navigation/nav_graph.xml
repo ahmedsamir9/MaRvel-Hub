@@ -21,5 +21,23 @@
         android:id="@+id/homeFragment"
         android:name="com.example.marvelhub.presentation.HomeScreen.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_characterDetailsFragment"
+            app:destination="@id/characterDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.example.marvelhub.presentation.DeatilsScreen.CharacterDetailsFragment"
+        android:label="character_details_fragment"
+        tools:layout="@layout/character_details_fragment" >
+        <argument
+            android:name="charcter_id"
+            app:argType="integer" />
+    </fragment>
 </navigation>
