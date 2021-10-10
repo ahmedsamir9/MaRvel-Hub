@@ -27,6 +27,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class CharacterDetailsFragment : Fragment() {
@@ -44,6 +45,7 @@ class CharacterDetailsFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         binding = CharacterDetailsFragmentBinding.inflate(inflater,container,false)
+
         return binding.root
     }
 

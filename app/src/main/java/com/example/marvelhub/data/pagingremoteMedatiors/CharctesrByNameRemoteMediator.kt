@@ -44,11 +44,15 @@ data class CharactersByNameRemoteMediator (
                 apiOffset = 0;
                 baseQuery = query
             }
+            if (baseQuery.isNotEmpty()){
             val response = fetchCharacters(apiOffset+1,baseQuery)
             apiOffset+=20
             localDataSource.addCharacters(response)
             val isEmpty = response.isEmpty()
-            RemoteMediator.MediatorResult.Success(endOfPaginationReached = isEmpty)
+            RemoteMediator.MediatorResult.Success(endOfPaginationReached = isEmpty)}
+            else{
+                RemoteMediator.MediatorResult.Success(endOfPaginationReached = true)
+            }
         } catch (exception: IOException) {
             RemoteMediator.MediatorResult.Error(exception)
         } catch (exception: HttpException) {

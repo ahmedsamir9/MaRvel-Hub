@@ -36,6 +36,7 @@ app:shapeAppearanceOverlay="@style/Widget.Task1.Search.Item.Corner">
         android:text="@string/searchHint"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:id="@+id/character_name"
         android:textColor="@color/white"
         android:layout_marginStart="@dimen/dimen8dp"
         android:layout_marginEnd="@dimen/dimen8dp"

@@ -6,6 +6,8 @@ import com.example.marvelhub.domain.model.Character
 import com.example.marvelhub.domain.repository.CharacterRepository
 import com.example.marvelhub.utils.Mappers
 import kotlinx.coroutines.flow.*
+import timber.log.Timber
+import java.util.*
 
 
 class CharacterRepositoryImpl (private val localDataSource: LocalDataSource,private val remoteDataSource: RemoteDataSource): CharacterRepository {
@@ -30,10 +32,11 @@ class CharacterRepositoryImpl (private val localDataSource: LocalDataSource,priv
     override suspend fun getCharactersByName(query: String): Flow<PagingData<Character>> {
         return  Pager(
             config =  PagingConfig(
-                pageSize = 10,
+                pageSize = 20,
                 enablePlaceholders = false) ,
             remoteMediator = CharactersByNameRemoteMediator(localDataSource,remoteDataSource,query),
-            pagingSourceFactory = {localDataSource.getCharacterDataByName(query)}
+            pagingSourceFactory = { localDataSource.getCharacterDataByName(query)
+            }
         ).flow.map { paging ->
             paging.map { entity -> Mappers.fromCharacterEntityToCharacter(entity) }
         }

@@ -23,7 +23,8 @@ class CharacterDetailsViewModel @Inject constructor
 
     fun getCharacterData(id:Int){
         viewModelScope.launch (Dispatchers.IO){
-               _character.postValue(getCharacterByIdUseCase(id)!!)
+            val data = getCharacterByIdUseCase(id)
+               _character.postValue(data)
         }
     }
     suspend fun getCharacterComicsByID(id:Int) = getCharacterComics(id).cachedIn(viewModelScope)
