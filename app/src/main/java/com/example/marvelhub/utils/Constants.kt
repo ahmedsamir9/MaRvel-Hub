@@ -7,6 +7,7 @@ object Constants {
     const val REQUEST_TIMEOUT = 3L
     const val PRIVATE_MODE = 0
     const val BASE_OFFSET =0
+    const val BASE_Query ="base_Query"
     const val PREF_NAME = "Marvel Pref"
     const val OFFSET_PREF_KEY ="offsset key"
 

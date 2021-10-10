@@ -7,6 +7,7 @@ import com.example.marvelhub.data.remote.model.storiesresponse.StoriesResponse
 
 interface RemoteDataSource {
    suspend fun getCharacters(offset :Int): CharacterResponse?
+   suspend fun getCharactersByName(offset :Int,name:String): CharacterResponse?
    suspend fun getCharacterComics(id:Int,offset :Int): ComicsResponse?
    suspend fun getCharacterEvents(id:Int,offset :Int): EventResponse?
    suspend fun getCharacterSeries(id:Int,offset :Int): SeriesResponse?

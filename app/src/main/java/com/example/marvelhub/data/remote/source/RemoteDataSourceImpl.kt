@@ -15,6 +15,10 @@ class RemoteDataSourceImpl (private val marvelService: MarvelService): RemoteDat
         return marvelService.getCharacters(offset)
     }
 
+    override suspend fun getCharactersByName(offset: Int, name: String): CharacterResponse? {
+        return marvelService.getCharactersByName(offset,name = name)
+    }
+
     override suspend fun getCharacterComics(id: Int, offset: Int): ComicsResponse? {
         return marvelService.getCharacterComics(id,offset)
     }

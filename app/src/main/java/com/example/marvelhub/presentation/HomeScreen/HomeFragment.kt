@@ -55,8 +55,16 @@ class HomeFragment : Fragment(){
     override fun onResume() {
         super.onResume()
         setOnClickOnItem()
-
         handleCharacterListState()
+
+        binding.searchIc.setOnClickListener {
+            val navigateToSearchScreenAction = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+            findNavController().navigate(navigateToSearchScreenAction)
+        }
+        binding.marvelLogo.setOnClickListener {
+            binding.charectersRv.smoothScrollToPosition(0)
+        }
+
     }
     private fun collectPagingData(){
         lifecycleScope.launch{

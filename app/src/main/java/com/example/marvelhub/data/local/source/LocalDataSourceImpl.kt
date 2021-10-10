@@ -1,5 +1,6 @@
 package com.example.marvelhub.data.local.source
 
+import androidx.paging.PagingSource
 import com.example.marvelhub.data.local.MarvelDataBase
 import com.example.marvelhub.data.local.PreferenceManager
 import com.example.marvelhub.data.repository.LocalDataSource
@@ -14,4 +15,5 @@ class LocalDataSourceImpl constructor(private val marvelDataBase: MarvelDataBase
     override fun setOffsetValue(offset: Int)= preferenceManager.setOffsetValue(offset)
     override fun getOffsetValue(): Int = preferenceManager.getOffsetValue()
     override fun getCharacterDataById(characterId: Int) = marvelDataBase.characterDao().getCharacterById(characterId)
+    override fun getCharacterDataByName(characterName: String): PagingSource<Int, CharacterEntity> = marvelDataBase.characterDao().getCharactersByName(characterName)
 }

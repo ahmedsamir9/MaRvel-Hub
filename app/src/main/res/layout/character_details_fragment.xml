@@ -51,9 +51,6 @@
 
 
     <androidx.core.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/scrollable"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -116,6 +113,33 @@
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/character_event_item"
                 tools:orientation="horizontal" />
+
+            <ProgressBar
+                android:id="@+id/comics_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorAccent"
+                android:indeterminateTintMode="src_atop"
+
+                app:layout_constraintBottom_toBottomOf="@id/comics_rv"
+                app:layout_constraintEnd_toEndOf="@id/comics_rv"
+                app:layout_constraintStart_toStartOf="@id/comics_rv"
+                app:layout_constraintTop_toTopOf="@+id/comics_rv" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/comics_retry_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/retry"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/comics_rv"
+                app:layout_constraintEnd_toEndOf="@id/comics_rv"
+                app:layout_constraintStart_toStartOf="@id/comics_rv"
+                app:layout_constraintTop_toTopOf="@+id/comics_rv"
+                 />
 
             <TextView
                 android:id="@+id/textView6"
@@ -188,6 +212,84 @@
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/character_event_item"
                 tools:orientation="horizontal" />
+            <ProgressBar
+                android:id="@+id/event_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorAccent"
+                android:indeterminateTintMode="src_atop"
+
+                app:layout_constraintBottom_toBottomOf="@id/event_rv"
+                app:layout_constraintEnd_toEndOf="@id/event_rv"
+                app:layout_constraintStart_toStartOf="@id/event_rv"
+                app:layout_constraintTop_toTopOf="@+id/event_rv" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/event_retry_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/retry"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/event_rv"
+                app:layout_constraintEnd_toEndOf="@id/event_rv"
+                app:layout_constraintStart_toStartOf="@id/event_rv"
+                app:layout_constraintTop_toTopOf="@+id/event_rv"
+                />
+            <ProgressBar
+                android:id="@+id/series_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorAccent"
+                android:indeterminateTintMode="src_atop"
+
+                app:layout_constraintBottom_toBottomOf="@id/series_rv"
+                app:layout_constraintEnd_toEndOf="@id/series_rv"
+                app:layout_constraintStart_toStartOf="@id/series_rv"
+                app:layout_constraintTop_toTopOf="@+id/series_rv" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/series_retry_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/retry"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/series_rv"
+                app:layout_constraintEnd_toEndOf="@id/series_rv"
+                app:layout_constraintStart_toStartOf="@id/series_rv"
+                app:layout_constraintTop_toTopOf="@+id/series_rv"
+                />
+            <ProgressBar
+                android:id="@+id/stories_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorAccent"
+                android:indeterminateTintMode="src_atop"
+
+                app:layout_constraintBottom_toBottomOf="@id/stories_rv"
+                app:layout_constraintEnd_toEndOf="@id/stories_rv"
+                app:layout_constraintStart_toStartOf="@id/stories_rv"
+                app:layout_constraintTop_toTopOf="@+id/stories_rv" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stories_retry_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/retry"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/stories_rv"
+                app:layout_constraintEnd_toEndOf="@id/stories_rv"
+                app:layout_constraintStart_toStartOf="@id/stories_rv"
+                app:layout_constraintTop_toTopOf="@+id/stories_rv"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.motion.widget.MotionLayout>

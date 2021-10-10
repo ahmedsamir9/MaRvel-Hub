@@ -27,7 +27,7 @@ class EventsPagingSource(private val remoteDataSource: RemoteDataSource, private
             val repos = response!!.data.eventDtos.map {
                 Mappers.fromEventDtoToEventData(it)
             }
-            val nextKey = if (repos.isEmpty()) {
+            val nextKey = if (repos.isNullOrEmpty()) {
                 null
             } else {
                 position + 20

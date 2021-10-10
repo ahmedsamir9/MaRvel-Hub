@@ -3,19 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable-nodpi/ic_search.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable-nodpi/loading_img.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable/half_circle_shape.xml" value="0.20729166666666668" />
+        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.20729166666666668" />
+        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/drawable/search_view_shape.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/activity_main.xml" value="0.2857789855072464" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/character_details_content.xml" value="0.32563405797101447" />
-        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/character_details_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/character_details_fragment.xml" value="0.1" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/character_event_item.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/details_content.xml" value="0.16" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/fragment_splash.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/hero_item.xml" value="0.6153846153846154" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/home_fragment.xml" value="0.18" />
         <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/item_loading_state.xml" value="0.5" />
+        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/search_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/owner/AndroidStudioProjects/MaRvelHub/app/src/main/res/layout/search_item.xml" value="0.5" />
       </map>
     </option>
   </component>

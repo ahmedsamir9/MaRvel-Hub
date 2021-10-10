@@ -8,6 +8,8 @@
     <string name="series">Series</string>
     <string name="stories">Stories</string>
     <string name="description">Description</string>
+    <string name="cancel">Cancel</string>
+    <string name="searchHint">search For a Character</string>
     <string name="randomShow">sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
     sssssssssssssssssssssssssssssssssssssssssssssssssssss</string>
 </resources>

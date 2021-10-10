@@ -20,6 +20,13 @@
         <item name="cornerSizeBottomLeft">@dimen/dimen24dp</item>
         <item name="cornerSizeBottomRight">@dimen/dimen24dp</item>
     </style>
+    <style name="Widget.Task1.Search.Item.Corner" parent="Widget.MaterialComponents.CardView">
+
+        <item name="cornerSizeTopLeft">@dimen/dimen24dp</item>
+        <item name="cornerSizeTopRight">@dimen/dimen24dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/dimen24dp</item>
+        <item name="cornerSizeBottomRight">@dimen/dimen24dp</item>
+    </style>
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">@dimen/dimen24dp</item>
@@ -27,7 +34,12 @@
         <item name="cornerSizeBottomLeft">@dimen/dimen24dp</item>
         <item name="cornerSizeBottomRight">@dimen/dimen24dp</item>
     </style>
-
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_baseline_search_24</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="closeIcon">@drawable/ic_baseline_close_24</item>
+    </style>
     <dimen name="dimen2dp">2dp</dimen>
     <dimen name="dimen0dp">0dp</dimen>
     <dimen name="dimen8dp">8dp</dimen>

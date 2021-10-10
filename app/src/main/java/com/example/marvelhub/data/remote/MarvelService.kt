@@ -20,5 +20,7 @@ interface MarvelService {
         suspend fun getCharacterEvents(@Path("characterId")characterId:Int,@Query("offset")offset:Int):EventResponse
         @GET("characters/{characterId}/stories")
         suspend fun getCharacterStories(@Path("characterId")characterId:Int,@Query("offset")offset:Int):StoriesResponse
+        @GET("characters")
+        suspend fun getCharactersByName(@Query("offset")offset:Int,@Query("limit")limit:Int=20,@Query("nameStartsWith")name:String): CharacterResponse?
 
 }

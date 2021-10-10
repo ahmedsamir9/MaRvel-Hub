@@ -62,12 +62,24 @@ class CharacterDetailsFragment : Fragment() {
         binding.backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
-        setUpRecyclerViews()
+        setUpRecyclerViews(binding.comicsRv,comicsPagingAdapter)
+        setUpRecyclerViews(binding.eventRv,eventsPagingAdapter)
+        setUpRecyclerViews(binding.seriesRv,seriesPagingAdapter)
+      setUpRecyclerViews(binding.storiesRv,storiesPagingAdapter)
+
         collectComicsData()
+        collectEventsData()
+        collectSeriesData()
     }
 
     override fun onResume() {
         super.onResume()
+
+        collectStoriesData()
+        handleAdapterListState(binding.comicsProgressBar,binding.comicsRetryBtn,comicsPagingAdapter)
+        handleAdapterListState(binding.eventProgressBar,binding.eventRetryBtn,eventsPagingAdapter)
+        handleAdapterListState(binding.seriesProgressBar,binding.seriesRetryBtn,seriesPagingAdapter)
+        handleAdapterListState(binding.storiesProgressBar,binding.seriesRetryBtn,storiesPagingAdapter)
     }
     private fun subscribeOnliveData(){
         viewModel.character.observe(viewLifecycleOwner, Observer { character->
@@ -83,11 +95,31 @@ class CharacterDetailsFragment : Fragment() {
             }
         }
     }
-
-  private fun setUpRecyclerViews(){
-        binding.comicsRv.apply {
+    private fun collectEventsData(){
+        lifecycleScope.launch {
+            viewModel.getCharacterEventsByID(characterDetailsFragmentArgs.charcterId).flowOn(Dispatchers.IO).collectLatest {
+                eventsPagingAdapter.submitData(it)
+            }
+        }
+    }
+    private fun collectSeriesData(){
+        lifecycleScope.launch {
+            viewModel.getCharacterSeriesByID(characterDetailsFragmentArgs.charcterId).flowOn(Dispatchers.IO).collectLatest {
+                seriesPagingAdapter.submitData(it)
+            }
+        }
+    }
+    private fun collectStoriesData(){
+        lifecycleScope.launch {
+            viewModel.getCharacterStoriesByID(characterDetailsFragmentArgs.charcterId).flowOn(Dispatchers.IO).collectLatest {
+                storiesPagingAdapter.submitData(it)
+            }
+        }
+    }
+  private fun setUpRecyclerViews(recyclerView: RecyclerView,pagingAdapter: EventPagingAdapter){
+        recyclerView.apply {
             layoutManager =LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
-            adapter =comicsPagingAdapter.withLoadStateFooter(LoadingAdapter{comicsPagingAdapter.retry()})
+            adapter =pagingAdapter.withLoadStateFooter(LoadingAdapter{pagingAdapter.retry()})
         }
     }
     private fun handleAdapterListState(progressBar:ProgressBar,errorBtn:Button,adapter: EventPagingAdapter){
@@ -116,7 +148,7 @@ class CharacterDetailsFragment : Fragment() {
             }
 
 
-            if (adapter.itemCount >0) progressBar.visibility = android.view.View.GONE
+            if (adapter.itemCount > 0) {progressBar.visibility = android.view.View.GONE}
         }
     }
 

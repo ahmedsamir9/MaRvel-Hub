@@ -1,6 +1,7 @@
 package com.example.marvelhub.data.remote.model.eventresponse
 
 
+import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
 import com.google.gson.annotations.SerializedName
 
 data class EventDto(

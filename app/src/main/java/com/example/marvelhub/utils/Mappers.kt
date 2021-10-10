@@ -11,9 +11,9 @@ import com.example.marvelhub.domain.model.EventData
 
 object Mappers {
     fun fromEventDtoToEventData(eventDto:EventDto) =
-        EventData(eventDto.title, String().imagePathConcatenation(eventDto.thumbnail.path,eventDto.thumbnail.extension),eventDto.id)
+        EventData(eventDto.title, String().imagePathConcatenation(eventDto.thumbnail),eventDto.id)
     fun fromComicsDtoToEventData(comicsDto: ComicsDto) =
-        EventData(comicsDto.title, String().imagePathConcatenation(comicsDto.thumbnail.path,comicsDto.thumbnail.extension),comicsDto.id)
+        EventData(comicsDto.title, String().imagePathConcatenation(comicsDto.thumbnail),comicsDto.id)
     fun fromCharacterEntityToCharacter(characterEntity:CharacterEntity) = Character(
         id = characterEntity.characterId,
         name = characterEntity.characterName,
@@ -22,12 +22,12 @@ object Mappers {
     )
     fun fromCharacterDtoToCharacterEntity(characterDto: CharacterDto)=CharacterEntity(
         characterId = characterDto.id,
-        characterImagePath = String().imagePathConcatenation(characterDto.thumbnail.path,characterDto.thumbnail.extension),
+        characterImagePath = String().imagePathConcatenation(characterDto.thumbnail),
         characterDescription = characterDto.description.fillCharacterEmptyDescription(),
         characterName = characterDto.name
     )
     fun fromSeriesDtoToEventData(seriesDto:SeriesDto) =
-        EventData(seriesDto.title, String().imagePathConcatenation(seriesDto.thumbnail.path,seriesDto.thumbnail.extension),seriesDto.id)
+        EventData(seriesDto.title, String().imagePathConcatenation(seriesDto.thumbnail),seriesDto.id)
     fun fromStoriesDtoToEventData(storiesDto: StoriesDto) =
-        EventData(storiesDto.title, String().imagePathConcatenation(storiesDto.thumbnail.path,storiesDto.thumbnail.extension),storiesDto.id)
+        EventData(storiesDto.title, String().imagePathConcatenation(storiesDto.thumbnail),storiesDto.id)
 }

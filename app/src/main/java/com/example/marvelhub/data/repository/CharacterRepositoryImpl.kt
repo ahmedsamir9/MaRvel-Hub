@@ -1,6 +1,7 @@
 package com.example.marvelhub.data.repository
 import androidx.paging.*
 import com.example.marvelhub.data.pagingremoteMedatiors.CharacterRemoteMediator
+import com.example.marvelhub.data.pagingremoteMedatiors.CharactersByNameRemoteMediator
 import com.example.marvelhub.domain.model.Character
 import com.example.marvelhub.domain.repository.CharacterRepository
 import com.example.marvelhub.utils.Mappers
@@ -24,5 +25,18 @@ class CharacterRepositoryImpl (private val localDataSource: LocalDataSource,priv
   override suspend fun getCharacterById(id: Int): Character {
       return Mappers.fromCharacterEntityToCharacter(localDataSource.getCharacterDataById(id))
   }
+
+    @ExperimentalPagingApi
+    override suspend fun getCharactersByName(query: String): Flow<PagingData<Character>> {
+        return  Pager(
+            config =  PagingConfig(
+                pageSize = 10,
+                enablePlaceholders = false) ,
+            remoteMediator = CharactersByNameRemoteMediator(localDataSource,remoteDataSource,query),
+            pagingSourceFactory = {localDataSource.getCharacterDataByName(query)}
+        ).flow.map { paging ->
+            paging.map { entity -> Mappers.fromCharacterEntityToCharacter(entity) }
+        }
+    }
 
 }

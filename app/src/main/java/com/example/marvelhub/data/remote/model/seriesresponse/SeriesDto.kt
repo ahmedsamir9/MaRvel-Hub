@@ -1,6 +1,7 @@
 package com.example.marvelhub.data.remote.model.seriesresponse
 
 
+import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
 import com.google.gson.annotations.SerializedName
 
 data class SeriesDto(
