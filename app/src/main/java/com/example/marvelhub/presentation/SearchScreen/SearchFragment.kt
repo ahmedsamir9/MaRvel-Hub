@@ -61,6 +61,7 @@ class SearchFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        closeSearchViewState()
        getCharacters()
         binding.cancelTxt.setOnClickListener {
            closeSearchViewState()
@@ -76,7 +77,7 @@ class SearchFragment : Fragment() {
                 if (newText!=null&&newText.isNotEmpty()){
                     job?.cancel()
                   job = lifecycleScope.launch {
-                        viewModel.getCharactersByName(newText).debounce(2000).flowOn(Dispatchers.IO).collectLatest {
+                        viewModel.getCharactersByName(newText).debounce(3000).flowOn(Dispatchers.IO).collectLatest {
                             charactersAdapter.submitData(it)
                         }
                     }

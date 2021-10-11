@@ -15,7 +15,7 @@ class CharacterRepositoryImpl (private val localDataSource: LocalDataSource,priv
     override suspend fun getCharacters(): Flow<PagingData<Character>> {
       return  Pager(
         config =  PagingConfig(
-          pageSize = 10,
+          pageSize =10,
           enablePlaceholders = false) ,
         remoteMediator = CharacterRemoteMediator(localDataSource,remoteDataSource),
         pagingSourceFactory = {localDataSource.getCharacters()}
@@ -32,7 +32,7 @@ class CharacterRepositoryImpl (private val localDataSource: LocalDataSource,priv
     override suspend fun getCharactersByName(query: String): Flow<PagingData<Character>> {
         return  Pager(
             config =  PagingConfig(
-                pageSize = 20,
+                pageSize =10,
                 enablePlaceholders = false) ,
             remoteMediator = CharactersByNameRemoteMediator(localDataSource,remoteDataSource,query),
             pagingSourceFactory = { localDataSource.getCharacterDataByName(query)
@@ -40,6 +40,10 @@ class CharacterRepositoryImpl (private val localDataSource: LocalDataSource,priv
         ).flow.map { paging ->
             paging.map { entity -> Mappers.fromCharacterEntityToCharacter(entity) }
         }
+    }
+
+    override suspend  fun releaseCharactersData() {
+        localDataSource.releaseAllCharacterData()
     }
 
 }

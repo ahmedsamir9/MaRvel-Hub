@@ -59,7 +59,7 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/colorAccent"
         android:indeterminateTintMode="src_atop"
-
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/search_rv"
         app:layout_constraintEnd_toEndOf="@id/search_rv"
         app:layout_constraintStart_toStartOf="@id/search_rv"

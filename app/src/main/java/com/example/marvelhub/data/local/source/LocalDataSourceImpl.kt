@@ -16,4 +16,8 @@ class LocalDataSourceImpl constructor(private val marvelDataBase: MarvelDataBase
     override fun getOffsetValue(): Int = preferenceManager.getOffsetValue()
     override fun getCharacterDataById(characterId: Int) = marvelDataBase.characterDao().getCharacterById(characterId)
     override fun getCharacterDataByName(characterName: String): PagingSource<Int, CharacterEntity> = marvelDataBase.characterDao().getCharactersByName(characterName)
+    override suspend fun releaseAllCharacterData() {
+        preferenceManager.releaseOffsetValue()
+        marvelDataBase.characterDao().deleteAllCharacters()
+    }
 }

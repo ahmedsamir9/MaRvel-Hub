@@ -18,30 +18,32 @@ data class CharacterRemoteMediator (
             private val localDataSource: LocalDataSource,
             private val remoteDataSource: RemoteDataSource
         ): RemoteMediator<Int, CharacterEntity>() {
-    val key = Constants.BASE_OFFSET;
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, CharacterEntity>
     ): RemoteMediator.MediatorResult {
+
         return try {
-            val loadKeys= when (loadType) {
+            val key = 10
+            when (loadType) {
                 LoadType.REFRESH ->{
-                    null
+                     RemoteMediator.MediatorResult.Success(endOfPaginationReached = localDataSource.getOffsetValue()+1 < 0)
                 }
                 LoadType.PREPEND -> {
                     return RemoteMediator.MediatorResult.Success(endOfPaginationReached = true)
                 }
                 LoadType.APPEND -> {
                     state.lastItemOrNull()
-                        ?: return RemoteMediator.MediatorResult.Success(endOfPaginationReached = true)
+                        ?: return RemoteMediator.MediatorResult.Success(endOfPaginationReached = localDataSource.getOffsetValue()+1<0)
                 }
             }
             var offset =localDataSource.getOffsetValue()
             val response = fetchCharacters(offset+1)
+            val isEmpty = response.isEmpty()
             offset += 20
             localDataSource.setOffsetValue(offset)
             localDataSource.addCharacters(response)
-            val isEmpty = response.isEmpty()
+
             RemoteMediator.MediatorResult.Success(endOfPaginationReached = isEmpty)
         } catch (exception: IOException) {
             RemoteMediator.MediatorResult.Error(exception)
@@ -50,6 +52,9 @@ data class CharacterRemoteMediator (
         }
 
     }
+
+    private fun getKeys() :Int = 20
+
     private suspend fun fetchCharacters(pageNumber:Int): List<CharacterEntity> {
         val response = remoteDataSource.getCharacters(pageNumber)
         return response!!.data.results.map { characterDto ->

@@ -15,13 +15,12 @@ import com.example.marvelhub.databinding.HomeFragmentBinding
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flowOn
 import androidx.paging.LoadState
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelhub.presentation.HomeScreen.adapters.CharacterPagingAdapter
 import com.example.marvelhub.utils.LoadingAdapter
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 
@@ -29,6 +28,7 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment(){
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding :HomeFragmentBinding
+    private var isLoaded= true
     private lateinit var characterPagingAdapter: CharacterPagingAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,24 +38,25 @@ class HomeFragment : Fragment(){
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         characterPagingAdapter = CharacterPagingAdapter(object :CharacterPagingAdapter.OnClickListenerOnCharacterItem{
             override fun onClickOnCharacter(characterId: Int) {
                 val navigationActionToDetailScreen = HomeFragmentDirections.actionHomeFragmentToCharacterDetailsFragment(characterId)
                 findNavController().navigate(navigationActionToDetailScreen)
             }
-
         })
+            collectPagingData()
+    }
+    override fun onStart() {
+        super.onStart()
         setUpCharactersRecyclerView()
-        collectPagingData()
+        handleCharacterListState()
     }
 
     override fun onResume() {
         super.onResume()
         setOnClickOnItem()
-        handleCharacterListState()
 
         binding.searchIc.setOnClickListener {
             val navigateToSearchScreenAction = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
@@ -68,7 +69,7 @@ class HomeFragment : Fragment(){
     }
     private fun collectPagingData(){
         lifecycleScope.launch{
-            viewModel.getCharacters().flowOn(Dispatchers.IO).collectLatest { pagingData->
+            viewModel.getCharacters().distinctUntilChanged().flowOn(Dispatchers.IO).collectLatest{ pagingData->
                characterPagingAdapter.submitData(pagingData)
             }
         }
@@ -118,8 +119,7 @@ class HomeFragment : Fragment(){
     }
     private fun handleCharacterListState(){
         characterPagingAdapter.addLoadStateListener { loadState ->
-        if (loadState.refresh is LoadState.Loading ||
-            loadState.append is LoadState.Loading)
+
         // Show ProgressBar
             if( characterPagingAdapter.itemCount <= 0)
                 binding.mainprogressBar.visibility = android.view.View.VISIBLE

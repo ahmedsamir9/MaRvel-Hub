@@ -27,7 +27,7 @@ data class CharactersByNameRemoteMediator (
         state: PagingState<Int, CharacterEntity>
     ): RemoteMediator.MediatorResult {
         return try {
-            val loadKeys= when (loadType) {
+           when (loadType) {
                 LoadType.REFRESH ->{
                     null
                 }
@@ -36,23 +36,22 @@ data class CharactersByNameRemoteMediator (
                 }
                 LoadType.APPEND -> {
                     state.lastItemOrNull()
-                        ?: return RemoteMediator.MediatorResult.Success(endOfPaginationReached = true)
+                        ?: return RemoteMediator.MediatorResult.Success(endOfPaginationReached = apiOffset+1<0)
                 }
             }
+
             if (query != baseQuery){
                 Timber.tag("chara").d("Here "+apiOffset)
                 apiOffset = 0;
                 baseQuery = query
             }
-            if (baseQuery.isNotEmpty()){
+
             val response = fetchCharacters(apiOffset+1,baseQuery)
             apiOffset+=20
             localDataSource.addCharacters(response)
             val isEmpty = response.isEmpty()
-            RemoteMediator.MediatorResult.Success(endOfPaginationReached = isEmpty)}
-            else{
-                RemoteMediator.MediatorResult.Success(endOfPaginationReached = true)
-            }
+            RemoteMediator.MediatorResult.Success(endOfPaginationReached = isEmpty)
+
         } catch (exception: IOException) {
             RemoteMediator.MediatorResult.Error(exception)
         } catch (exception: HttpException) {

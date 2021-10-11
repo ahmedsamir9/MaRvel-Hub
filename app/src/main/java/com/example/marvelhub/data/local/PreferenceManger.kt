@@ -16,4 +16,5 @@ class PreferenceManager constructor(ctx:Context) {
         editor.apply()
     }
     fun getOffsetValue() = sharedPref.getInt(OFFSET_PREF_KEY, BASE_OFFSET)
+    fun releaseOffsetValue(): Unit =sharedPref.edit().clear().apply()
 }

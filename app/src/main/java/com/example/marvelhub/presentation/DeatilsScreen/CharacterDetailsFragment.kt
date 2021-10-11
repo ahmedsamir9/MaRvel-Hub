@@ -81,7 +81,7 @@ class CharacterDetailsFragment : Fragment() {
         handleAdapterListState(binding.comicsProgressBar,binding.comicsRetryBtn,comicsPagingAdapter)
         handleAdapterListState(binding.eventProgressBar,binding.eventRetryBtn,eventsPagingAdapter)
         handleAdapterListState(binding.seriesProgressBar,binding.seriesRetryBtn,seriesPagingAdapter)
-        handleAdapterListState(binding.storiesProgressBar,binding.seriesRetryBtn,storiesPagingAdapter)
+        handleAdapterListState(binding.storiesProgressBar,binding.storiesRetryBtn,storiesPagingAdapter)
     }
     private fun subscribeOnliveData(){
         viewModel.character.observe(viewLifecycleOwner, Observer { character->

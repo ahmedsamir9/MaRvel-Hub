@@ -12,5 +12,5 @@ interface LocalDataSource {
      fun getOffsetValue():Int
      fun getCharacterDataById(characterId:Int):CharacterEntity
      fun getCharacterDataByName(characterName:String): PagingSource<Int, CharacterEntity>
-
+   suspend fun releaseAllCharacterData()
 }
