@@ -36,7 +36,7 @@
 <img alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/arch.jpg">
 
 ## Navigation graph :
-<img alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/navgraph.PNG">
+<img alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/nav.PNG">
 
 
 ## Resources
