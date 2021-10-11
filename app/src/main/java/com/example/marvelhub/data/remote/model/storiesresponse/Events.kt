@@ -9,7 +9,7 @@ data class Events(
     @SerializedName("collectionURI")
     val collectionURI: String,
     @SerializedName("items")
-    val items: List<ItemXXX>,
+    val items: List<Item>,
     @SerializedName("returned")
     val returned: Int
 )

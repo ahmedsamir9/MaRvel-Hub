@@ -1,6 +1,7 @@
 package com.example.marvelhub.data.remote.model.eventresponse
 
 
+import com.example.marvelhub.data.remote.model.seriesresponse.ItemXXXX
 import com.google.gson.annotations.SerializedName
 
 data class Stories(

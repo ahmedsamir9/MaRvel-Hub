@@ -40,17 +40,27 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         charactersAdapter = CharactersPagingAdapter(object : CharactersPagingAdapter.OnClickOnCharacterItem{
             override fun onClickOnCharacter(characterId: Int) {
                 val navigateToDetailsFragmentAction = SearchFragmentDirections.actionSearchFragmentToCharacterDetailsFragment(characterId)
                 findNavController().navigate(navigateToDetailsFragmentAction)
             }
         })
+    }
+    override fun onStart() {
+        super.onStart()
         setUpRecyclerView()
         handleCharactersListState()
 
+    }
+    override fun onResume() {
+        super.onResume()
+        getCharacters()
+        binding.cancelTxt.setOnClickListener {
+            closeSearchViewState()
+        }
     }
     private fun setUpRecyclerView(){
         binding.searchRv.apply {
@@ -59,14 +69,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        closeSearchViewState()
-       getCharacters()
-        binding.cancelTxt.setOnClickListener {
-           closeSearchViewState()
-        }
-    }
+
     private fun getCharacters(){
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -77,7 +80,7 @@ class SearchFragment : Fragment() {
                 if (newText!=null&&newText.isNotEmpty()){
                     job?.cancel()
                   job = lifecycleScope.launch {
-                        viewModel.getCharactersByName(newText).debounce(3000).flowOn(Dispatchers.IO).collectLatest {
+                        viewModel.getCharactersByName(newText).debounce(2000).flowOn(Dispatchers.IO).collectLatest {
                             charactersAdapter.submitData(it)
                         }
                     }

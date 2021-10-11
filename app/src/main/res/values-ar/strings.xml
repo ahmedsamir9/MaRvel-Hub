@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MaRvel Hub</string>
+    <string name="retry">اعاد المحوله</string>
+    <string name="events">احداث</string>
+    <string name="Comics">قصص مصورة</string>
+    <string name="series">مسلسلات</string>
+    <string name="stories">قصص</string>
+    <string name="description">الوصف</string>
+    <string name="cancel">الغاء</string>
+    <string name="searchHint">ابحث عن شخصيه</string>
+</resources>

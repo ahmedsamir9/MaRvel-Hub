@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MaRvel Hub</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="retry">Retry</string>
     <string name="events">Events</string>
     <string name="Comics">Comics</string>
@@ -10,6 +10,6 @@
     <string name="description">Description</string>
     <string name="cancel">Cancel</string>
     <string name="searchHint">search For a Character</string>
-    <string name="randomShow">sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+    <string name="randomShow" translatable="false">sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
     sssssssssssssssssssssssssssssssssssssssssssssssssssss</string>
 </resources>

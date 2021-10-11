@@ -1,6 +1,7 @@
 package com.example.marvelhub.data.remote.model.seriesresponse
 
 
+import com.example.marvelhub.data.remote.model.storiesresponse.Item
 import com.google.gson.annotations.SerializedName
 
 data class Comics(
@@ -9,7 +10,7 @@ data class Comics(
     @SerializedName("collectionURI")
     val collectionURI: String,
     @SerializedName("items")
-    val items: List<ItemX>,
+    val items: List<Item>,
     @SerializedName("returned")
     val returned: Int
 )

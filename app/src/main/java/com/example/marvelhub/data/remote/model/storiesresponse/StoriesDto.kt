@@ -3,6 +3,9 @@ package com.example.marvelhub.data.remote.model.storiesresponse
 
 
 import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
+import com.example.marvelhub.data.remote.model.seriesresponse.Characters
+import com.example.marvelhub.data.remote.model.seriesresponse.Comics
+import com.example.marvelhub.data.remote.model.seriesresponse.Creators
 import com.google.gson.annotations.SerializedName
 
 data class StoriesDto(
@@ -21,7 +24,7 @@ data class StoriesDto(
     @SerializedName("modified")
     val modified: String,
     @SerializedName("originalIssue")
-    val originalIssue: OriginalIssue,
+    val originalIssue: Item,
     @SerializedName("resourceURI")
     val resourceURI: String,
     @SerializedName("series")

@@ -1,7 +1,12 @@
 package com.example.marvelhub.data.remote.model.eventresponse
 
 
+import com.example.marvelhub.data.remote.model.characterresponse.Item
 import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
+import com.example.marvelhub.data.remote.model.seriesresponse.Characters
+import com.example.marvelhub.data.remote.model.seriesresponse.Comics
+import com.example.marvelhub.data.remote.model.seriesresponse.Creators
+import com.example.marvelhub.data.remote.model.seriesresponse.Url
 import com.google.gson.annotations.SerializedName
 
 data class EventDto(
@@ -20,9 +25,9 @@ data class EventDto(
     @SerializedName("modified")
     val modified: String,
     @SerializedName("next")
-    val next: Next,
+    val next: Item,
     @SerializedName("previous")
-    val previous: Previous,
+    val previous: Item,
     @SerializedName("resourceURI")
     val resourceURI: String,
     @SerializedName("series")

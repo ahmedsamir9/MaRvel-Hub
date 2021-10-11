@@ -2,6 +2,8 @@ package com.example.marvelhub.data.remote.model.seriesresponse
 
 
 import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
+import com.example.marvelhub.data.remote.model.storiesresponse.Events
+import com.example.marvelhub.data.remote.model.storiesresponse.Item
 import com.google.gson.annotations.SerializedName
 
 data class SeriesDto(
@@ -22,7 +24,7 @@ data class SeriesDto(
     @SerializedName("modified")
     val modified: String,
     @SerializedName("next")
-    val next: Next,
+    val next: Item,
     @SerializedName("previous")
     val previous: Any,
     @SerializedName("rating")

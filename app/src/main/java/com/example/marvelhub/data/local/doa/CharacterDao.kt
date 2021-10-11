@@ -16,7 +16,7 @@ interface CharacterDao {
     fun getCharacter(id :Int): Flow<CharacterEntity>
     @Query("select * from character where characterId =:id")
     fun getCharacterById(id: Int):CharacterEntity
-    @Query("select * from Character where characterName GLOB '*' || :name|| '*'" )
+    @Query("select * from Character where characterName like '%' || :name|| '%'" )
     fun getCharactersByName(name:String): PagingSource<Int,CharacterEntity>
     @Query("delete from character")
      fun deleteAllCharacters()

@@ -27,7 +27,7 @@
             android:layout_height="40dp"
             motion:layout_constraintBottom_toBottomOf="@+id/character_img"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" />
+            motion:layout_constraintLeft_toLeftOf="@+id/character_img" />
         <Constraint
             android:id="@+id/back_btn"
             motion:layout_constraintEnd_toEndOf="@+id/half_shaped_view"
@@ -35,14 +35,15 @@
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@+id/half_shaped_view"
             motion:layout_constraintTop_toTopOf="@+id/half_shaped_view"
-            motion:layout_constraintStart_toStartOf="@+id/character_img" />
+            motion:layout_constraintLeft_toLeftOf="@+id/character_img"
+            motion:layout_constraintStart_toStartOf="@+id/half_shaped_view" />
         <Constraint
             android:id="@+id/character_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/character_img"
-            motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
+            motion:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp" />
     </ConstraintSet>
 
@@ -53,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintRight_toRightOf="parent"
             motion:layout_constraintHorizontal_bias="1.0"
             motion:layout_constraintBottom_toBottomOf="@+id/character_name" />
         <Constraint
@@ -61,8 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toEndOf="@+id/half_shaped_view"
-            android:layout_marginStart="16dp" />
+            motion:layout_constraintLeft_toRightOf="@+id/half_shaped_view"
+            android:layout_marginLeft="16dp" />
         <Constraint
             android:layout_height="0dp"
             motion:layout_constraintStart_toStartOf="parent"

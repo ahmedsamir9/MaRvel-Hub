@@ -2,6 +2,10 @@ package com.example.marvelhub.data.remote.model.comicsresponse
 
 
 import com.example.marvelhub.data.remote.model.characterresponse.Thumbnail
+import com.example.marvelhub.data.remote.model.seriesresponse.Characters
+import com.example.marvelhub.data.remote.model.seriesresponse.Creators
+import com.example.marvelhub.data.remote.model.seriesresponse.Url
+import com.example.marvelhub.data.remote.model.storiesresponse.Events
 import com.google.gson.annotations.SerializedName
 
 data class ComicsDto(
