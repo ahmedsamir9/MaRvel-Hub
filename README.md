@@ -1,7 +1,7 @@
 # Marvel Hub Android App
 
 * sample app (single activity app) that marvel characters Data 
-## 🎥 Watch demo on [youtube](https://youtu.be/jPT40HjXRlI)
+## 🎥 Watch demo on [youtube](https://youtu.be/yh9xiSPLA14)
 ## 🧐 About
 * main purpose for building this project is to achieve Single source of truth(SSOT) principle(which is local Db) , handle all states for every screen and implement clean architecture also it is a challenge
 
