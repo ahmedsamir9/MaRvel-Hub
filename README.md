@@ -10,7 +10,7 @@
 - [2] Get Character data (description, comics, stories. series and events )
 - [3] Search For specific character
 ## 📱 Screenshots 
-<img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s1.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s2.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s7.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s3.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s4.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s5.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s6.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s8.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s9.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s10.PNG"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/s11.PNG">
+<img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p1.jpeg"> <img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p3.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p2.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p4.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p5.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p6.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p7.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p8.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p9.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p10.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p11.jpeg"><img width="150" alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/p12.jpeg">
 
 ## Requirements
  * android Lollipop or higher
@@ -33,7 +33,7 @@
 * Kotlin Extention function
 * ViewBinding
 ## architecture : 
-<img alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/final-architecture.png">
+<img alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/ui/arch.jpg">
 
 ## Navigation graph :
 <img alt="Screen Shot 2020-09-04 at 2 48 55 PM" src="/pics/navgraph.PNG">
