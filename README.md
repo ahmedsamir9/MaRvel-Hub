@@ -1,4 +1,4 @@
-#Marvel Hub Android
+# Marvel Hub Android App
 
 * sample app (single activity app) that marvel characters Data 
 ## 🎥 Watch demo on [youtube](https://youtu.be/jPT40HjXRlI)
